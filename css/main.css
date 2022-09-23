@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
 :root {
   --blue: #1da1f2;
+  --blue-opaque: #1da0f23b;
   --dark:#212121;
   --dark01:#393939;
   --white: #efefef;
@@ -9,18 +10,22 @@
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  padding: 0;
-  margin: 0;
   line-height: 1.3rem;
   font-size: 1rem;
   font-family: "Lato";
 }
 
 button {
-  border-radius: 0.25rem;
+  border-radius: 50%;
   border: none;
   outline: none;
   overflow: hidden;
@@ -28,17 +33,8 @@ button {
 }
 
 img {
-  width: 18rem;
-  height: 18rem;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 50%;
-  border: 5px solid var(--blue);
-  padding: 1rem;
-}
-
-.img-area {
-  position: relative;
+  max-width: 100%;
+  height: auto;
 }
 
 .rotate {
@@ -70,14 +66,29 @@ img {
   }
 }
 .wraper {
-  max-width: 900px;
-  height: 100vh;
-  text-align: center;
-  padding: 2rem;
-  margin: 0 auto;
+  max-width: 476px;
+  height: 98vh;
+  margin: 5px auto;
+  border-radius: 7px;
   overflow: hidden;
   background-color: var(--dark);
   color: var(--white);
+}
+.wraper header {
+  background-color: var(--blue-opaque);
+  padding: 0.6rem 1rem;
+  height: 10vh;
+}
+.wraper header .hdbtn {
+  width: 52px;
+  height: 52px;
+  font-size: 22px;
+  background-color: var(--dark01);
+  color: var(--white, #efefef);
+  border: none;
+}
+.wraper header .hdbtn.active {
+  background-color: var(--blue);
 }
 .wraper header, .wraper .controls, .wraper .song-timer {
   display: -webkit-box;
@@ -92,53 +103,162 @@ img {
   text-align: center;
   color: var(--white);
 }
-.wraper header .hdbtn {
-  width: 52px;
-  height: 52px;
-  font-size: 22px;
+.wraper form {
   background-color: var(--dark01);
-  color: var(--white, #efefef);
+}
+.wraper form input {
+  padding: 1rem;
+  background-color: transparent;
+  width: 100%;
   border: none;
+  color: var(--white);
+  outline: none;
+  position: relative;
 }
-.wraper header .hdbtn.active {
-  background-color: var(--blue);
+.wraper form input::before {
+  content: '<i class="ri-close-circle-fill"></i>';
+  color: var(--blue);
+  position: absolute;
+  top: 50%;
 }
-.wraper .player {
-  margin-top: 2rem;
+.wraper .player .img-area {
+  position: relative;
+  text-align: center;
+  height: 63vh;
+  padding-top: 20%;
+  background-color: var(--dark01);
+  background-image: url(../assets/images/back.jpg);
+  background-size: cover;
 }
-.wraper .name {
-  color: #a7a9ab;
-  font-size: 1.5rem;
+.wraper .player .img-area img {
+  width: 18rem;
+  height: 18rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--dark);
+  pointer-events: none;
+}
+.wraper .player .img-area::before {
+  content: "";
+  background-image: url(../assets/images/discn.png);
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  margin: auto;
+  border: 2px solid var(--dark);
+  border-radius: 50%;
+  background-size: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.wraper .player .song-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 2rem;
+}
+.wraper .player .song-details .name {
+  color: var(--blue);
+  font-size: 1rem;
   text-transform: capitalize;
 }
-.wraper .artist {
+.wraper .player .song-details .artist {
   font-size: 14px;
   text-transform: capitalize;
-  padding: 10px 0 20px 0;
+  padding: 10px 0 5px 0;
+  margin-left: 7px;
+}
+.wraper .musics-list {
+  width: 100%;
+  height: 61vh;
+  overflow: auto;
+}
+.wraper .musics-list::-webkit-scrollbar {
+  width: 7px;
+}
+.wraper .musics-list::-webkit-scrollbar-thumb {
+  width: 5px;
+  background-color: var(--dark01);
+}
+.wraper .musics-list .music {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-bottom: 1px solid var(--dark01);
+  margin-bottom: -1px;
+  padding: 0.5rem 1rem;
+}
+.wraper .musics-list .music .image {
+  width: 45px;
+  height: 45px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.wraper .musics-list .music .image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.wraper .musics-list .music .content {
+  margin-left: 10px;
+}
+.wraper .musics-list .music .content h4 {
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+.wraper .musics-list .music .icon i {
+  color: var(--white);
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 50px;
+}
+.wraper .musics-list .music.playing {
+  border-left: 4px solid var(--blue);
+  background-color: var(--blue-opaque);
 }
 .wraper .controls {
-  margin: 25px auto;
-  width: 50%;
+  margin: auto;
+  width: 85%;
 }
 .wraper .controls .btnC {
-  width: 60px;
-  height: 60px;
+  width: 53px;
+  height: 52px;
   border-radius: 50%;
+  margin: 0 7px;
   background-color: var(--dark01);
   color: var(--white);
 }
 .wraper .controls .btnC.play-pause {
   border: var(--blue) 5px solid;
 }
+.wraper .controls .btnC:active i {
+  color: var(--blue);
+}
+.wraper .controls .btnC:active {
+  background-color: var(--blue-opaque);
+}
 .wraper .controls i {
   font-size: 22px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
 }
 .wraper .audioC {
-  padding: 20px 0 20px 0;
+  padding: 0 2rem;
+  margin-bottom: 1rem;
 }
 .wraper .audioC .song-timer {
   margin-bottom: 10px;
@@ -150,7 +270,7 @@ img {
 .wraper .audioC .progress-area {
   height: 7px;
   width: 100%;
-  margin-top: 15px;
+  margin-top: 5px;
   border-radius: 50px;
   background-color: var(--dark01);
   position: relative;
@@ -166,7 +286,7 @@ img {
 .wraper .audioC .progress-area .progress-bar::before {
   content: "";
   position: absolute;
-  background-color: var(--blue);
+  background-color: var(--blue-opaque);
   border-radius: 50%;
   top: 50%;
   right: -14px;
@@ -193,9 +313,9 @@ img {
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   top: 50%;
-  right: -7px;
-  width: 15px;
-  height: 15px;
+  right: -8px;
+  width: 14px;
+  height: 14px;
   outline: none;
   z-index: 2;
 }

@@ -76,7 +76,7 @@ progress.progressArea.onclick = function (event) {
 
 function loadMusic(index) {
     const { name, artist, img, src } = allMusic[ index - 1 ];
-    music.artist.innerText = artist;
+    music.artist.innerText = " - "+artist;
     music.name.innerText = name;
     music.image.src = "assets/images/"+img;
     music.audio.src = "assets/songs/"+src;
