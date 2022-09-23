@@ -161,23 +161,23 @@ img {
   width: 0%;
   position: relative;
   border-radius: inherit;
-  background-color: green;
+  background-color: var(--blue);
 }
 .wraper .audioC .progress-area .progress-bar::before {
   content: "";
   position: absolute;
-  background-color: var(--dark01);
+  background-color: var(--blue);
   border-radius: 50%;
   top: 50%;
-  left: 0;
+  right: -14px;
   z-index: 2;
   width: 25px;
   height: 25px;
   outline: none;
   border: none;
   pointer-events: none;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
@@ -188,11 +188,12 @@ img {
   border-radius: 50%;
   border: none;
   pointer-events: none;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   top: 50%;
+  right: -7px;
   width: 15px;
   height: 15px;
   outline: none;

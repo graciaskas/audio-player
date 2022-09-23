@@ -101,7 +101,6 @@ img {
         font-size: 1.5rem;
         text-transform: capitalize;
     }
-
     .artist {
         font-size: 14px;
         text-transform: capitalize;
@@ -148,21 +147,21 @@ img {
                 width: 0%;
                 position: relative;
                 border-radius: inherit;
-                background-color: green;
+                background-color: var(--blue);
                 &::before{
                     content: '';
                     position: absolute;
-                    background-color:var(--dark01);
+                    background-color:var(--blue);
                     border-radius: 50%;
                     top: 50%;
-                    left: 0;
+                    right: -14px;
                     z-index: 2;
                     width: 25px;
                     height: 25px;
                     outline: none;
                     border: none;
                     pointer-events: none;
-                    transform: translate(-50%, -50%);
+                    transform: translateY(-50%);
                     transition: all 0.2s ease;
                 }
                 &::after{
@@ -172,9 +171,10 @@ img {
                     border-radius: 50%;
                     border: none;
                     pointer-events: none;
-                    transform: translate(-50%, -50%);
+                    transform: translateY(-50%);
                     transition: all 0.2s ease;
                     top: 50%;
+                    right: -7px;
                     width: 15px;
                     height: 15px;
                     outline: none;
@@ -183,5 +183,4 @@ img {
             }
         }
     }
-    
 }

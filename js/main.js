@@ -46,7 +46,6 @@ window.onload = () => {
 
 controls.play.onclick = function (event) {
     event.preventDefault();
-
     const isMusicPlay = wraper.classList.contains('paused');
     isMusicPlay ? pauseMusic() : playMusic();
 }
@@ -62,6 +61,18 @@ controls.next.onclick = function (event) {
 }
 
 music.audio.addEventListener("timeupdate", timeUpdate);
+music.audio.addEventListener("ended", () => {
+    nextMusic();
+});
+
+progress.progressArea.onclick = function (event) {
+    let progressLength = progress.progressArea.clientWidth;
+    let clientOffsetX = event.offsetX;
+    let maxDuration = music.audio.duration;
+
+    music.audio.currentTime = (clientOffsetX / progressLength) * maxDuration;
+    playMusic();
+}
 
 function loadMusic(index) {
     const { name, artist, img, src } = allMusic[ index - 1 ];
@@ -103,21 +114,25 @@ function nextMusic() {
 function timeUpdate(event) {
     const { currentTime, duration } = event.target;
     let progressLength = (currentTime / duration) * 100;
+    progress.progressBar.style.width = progressLength + "%";
    
 
-    music.audio.addEventListener("loadeddate", event => {
+    music.audio.addEventListener("loadeddata", event => {
         //Get song duration, minutes and seconds
-        console.log(event);
         let musicDuration = music.audio.duration,
             minutes = Math.floor(musicDuration / 60),
             seconds = Math.floor(musicDuration % 60);
-        
+
+        if (seconds < 10) { 
+            seconds = `0${seconds}`;
+        }
         progress.maxDuration.innerText = minutes + ":" + seconds;
     });
-}
 
-function loadedDate() {
-    
+    let currentMin = Math.floor(currentTime / 60),
+        currentSec = Math.floor(currentTime % 60);
+    if (currentSec < 10) { 
+        currentSec = `0${currentSec}`;
+    }
+    progress.currentTime.innerText = currentMin + ":" + currentSec;
 }
-
-console.log(document.querySelector('#main-audio'));
