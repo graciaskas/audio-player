@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+:root {
+  --blue: #1da1f2;
+  --dark:#212121;
+  --dark01:#393939;
+  --white: #efefef;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  line-height: 1.3rem;
+  font-size: 1rem;
+  font-family: "Lato";
+}
+
+button {
+  border-radius: 0.25rem;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+img {
+  width: 18rem;
+  height: 18rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--blue);
+  padding: 1rem;
+}
+
+.img-area {
+  position: relative;
+}
+
+.rotate {
+  -webkit-animation: rotate 8s infinite linear;
+          animation: rotate 8s infinite linear;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+.wraper {
+  max-width: 900px;
+  height: 100vh;
+  text-align: center;
+  padding: 2rem;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: var(--dark);
+  color: var(--white);
+}
+.wraper header, .wraper .controls, .wraper .song-timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+  color: var(--white);
+}
+.wraper header .hdbtn {
+  width: 52px;
+  height: 52px;
+  font-size: 22px;
+  background-color: var(--dark01);
+  color: var(--white, #efefef);
+  border: none;
+}
+.wraper header .hdbtn.active {
+  background-color: var(--blue);
+}
+.wraper .player {
+  margin-top: 2rem;
+}
+.wraper .name {
+  color: #a7a9ab;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+.wraper .artist {
+  font-size: 14px;
+  text-transform: capitalize;
+  padding: 10px 0 20px 0;
+}
+.wraper .controls {
+  margin: 25px auto;
+  width: 50%;
+}
+.wraper .controls .btnC {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--dark01);
+  color: var(--white);
+}
+.wraper .controls .btnC.play-pause {
+  border: var(--blue) 5px solid;
+}
+.wraper .controls i {
+  font-size: 22px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.wraper .audioC {
+  padding: 20px 0 20px 0;
+}
+.wraper .audioC .song-timer {
+  margin-bottom: 10px;
+}
+.wraper .audioC .song-timer span {
+  font-size: 10px;
+  font-weight: 800;
+}
+.wraper .audioC .progress-area {
+  height: 7px;
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 50px;
+  background-color: var(--dark01);
+  position: relative;
+  cursor: pointer;
+}
+.wraper .audioC .progress-area .progress-bar {
+  height: inherit;
+  width: 0%;
+  position: relative;
+  border-radius: inherit;
+  background-color: green;
+}
+.wraper .audioC .progress-area .progress-bar::before {
+  content: "";
+  position: absolute;
+  background-color: var(--dark01);
+  border-radius: 50%;
+  top: 50%;
+  left: 0;
+  z-index: 2;
+  width: 25px;
+  height: 25px;
+  outline: none;
+  border: none;
+  pointer-events: none;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.wraper .audioC .progress-area .progress-bar::after {
+  content: "";
+  position: absolute;
+  background-color: var(--blue);
+  border-radius: 50%;
+  border: none;
+  pointer-events: none;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  top: 50%;
+  width: 15px;
+  height: 15px;
+  outline: none;
+  z-index: 2;
+}
