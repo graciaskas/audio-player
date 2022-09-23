@@ -182,13 +182,13 @@ img {
             }
             .content {
                 margin-left: 10px;
+                width: 95%;
                 h4{ color: var(--blue); margin-bottom: 4px;}
             }
             .icon i{ 
                 color: var(--white);
                 align-self: flex-end;
                 align-items: flex-end;
-                width: 50px;
             }
             &.playing{
                 border-left: 4px solid var(--blue);

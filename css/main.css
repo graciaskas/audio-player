@@ -214,6 +214,7 @@ img {
 }
 .wraper .musics-list .music .content {
   margin-left: 10px;
+  width: 95%;
 }
 .wraper .musics-list .music .content h4 {
   color: var(--blue);
@@ -227,6 +228,7 @@ img {
       -ms-flex-align: end;
           align-items: flex-end;
   width: 50px;
+  float: right;
 }
 .wraper .musics-list .music.playing {
   border-left: 4px solid var(--blue);
